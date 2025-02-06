@@ -11,8 +11,14 @@ import streamlit as st
 import pickle
 import re
 
-vect=pickle.load(open("best-l-vect.pickle","rb"))
-model=pickle.load(open("best-l-model.pickle","rb"))
+#vect=pickle.load(open("best-l-vect.pickle","rb"))
+
+with open("best-l-vect.pickle", "rb") as f:
+    vect = pickle.load(f)
+#model=pickle.load(open("best-l-model.pickle","rb"))
+
+with open("best-l-model.pickle", "rb") as g:
+    model = pickle.load(g)
 st.title("Deep Learning Based-Semantic Classification for Arabic: Case of Kalila w Dimna")
 text=st.text_input("Please enter your text to semantic analysis")
 cleaned_text = re.sub('[^؀-ۿ]+', ' ', str(text))
